@@ -20,8 +20,14 @@ class RegisterNewUser extends React.Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            submitted: true
+        
+
+        this.client.postUser(this.state.formData).then(result => {
+            this.setState({
+                submitted: true
+            })
+        }).catch(error => {
+            console.log(error.message)
         })
     }
     // Following code copied from react-demo-app. 

@@ -5,8 +5,24 @@ class HerokuappService {
         this.url = url;
         this.client = client;
     }
-    getQuestion(){
-        return this.client.get(this.url);
+    getUsers(){
+        return this.client.get(this.url + "/users");
+    }
+
+    postMessage(messageObject){
+        return this.client.post(this.url + "/messages", messageObject);
+    }
+
+    postUser(userObject){
+        return this.client.post(this.url + "/users", userObject);
+    }
+
+    postLike(id){
+        return this.client.post(this.url + "/likes", {messageId: id});
+    }
+
+    removeLike(id){
+        return this.client.delete(this.url + "/likes/" + id);
     }
 }
 export default HerokuappService;
