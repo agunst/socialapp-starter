@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import hello_dog from '../components/pics/hello_dog.jpg'
+
 import NewPost from '../components/NewPost'
 import MyPosts from '../components/MyPosts'
 import NewsFeed from '../components/NewsFeed'
@@ -160,6 +162,9 @@ class ActivityPage extends Component {
                 <div className="FirstColumn">
                 <h3>Update My Status</h3>
                 <NewPost addPost={this.addPost}/>
+                <div className="FirstColumnPic"></div>
+                <img src={hello_dog} alt="happy dog"/>
+                
                 </div>
                 <div className ="SecondColumn">
                 <h3>My Posts</h3>
