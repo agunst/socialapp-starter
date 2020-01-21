@@ -15,7 +15,11 @@ class HerokuappService {
     }
 
     postMessage(messageObject) {
-        return this.client.post(this.url + "/messages", messageObject);
+        const loginData = localStorage.getItem("login");
+        return this.client.post(this.url + "/messages", messageObject, {
+            headers: { Authorization: `Bearer ${loginData.result.token}` }
+        }
+        );
     }
 
     postLike(id) {
