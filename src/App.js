@@ -1,12 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import ActivityPage from './pages/ActivityPage';
 import RegisterNewUser from "./pages/RegisterNewUser";
 import NotFound from "./pages/NotFound";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 class App extends React.Component {
   render() {
     return (
