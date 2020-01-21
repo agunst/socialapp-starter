@@ -47,7 +47,6 @@ class NewPost extends React.Component {
                     <br />
                     <button>Submit Update</button> <br />
                 </form>
-                {this.state.message.text}
             </div>
         );
     }
