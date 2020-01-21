@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import ActivityPage from './pages/ActivityPage';
+import RegisterNewUser from "./pages/RegisterNewUser";
 import NotFound from "./pages/NotFound";
 import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
@@ -11,25 +12,35 @@ class App extends React.Component {
     return (
       <Switch>
         <Route
-            exact
-            path="/"
-            component={Home}
-          />
-          <Route
-            exact
-            path="/profile/:username"
-            component={Profile}
-          />
-           <Route
-            exact
-            path="/activitypage"
-            component={ActivityPage}
-          />
-          <Route
-            exact
-            path="*"
-            component={NotFound}
-          />
+          exact
+          path="/"
+          component={Home}
+        />
+        <Route
+          exact
+          path="/profile/:username"
+          component={Profile}
+        />
+        <Route
+          exact
+          path="/Register"
+          component={RegisterNewUser}
+        />
+        <Route
+          exact
+          path="/activitypage"
+          component={ActivityPage}
+        />
+        <Route
+          exact
+          path="*"
+          component={NotFound}
+        />
+        <Route
+          exact
+          path="*"
+          component={NotFound}
+        />
       </Switch>
     );
   }

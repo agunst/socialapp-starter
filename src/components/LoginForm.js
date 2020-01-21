@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Spinner from "react-spinkit";
 import { withAsyncAction } from "../HOCs";
 import "./LoginForm.css";
@@ -39,6 +40,11 @@ class LoginForm extends React.Component {
             Login
           </button>
         </form>
+        <br />
+        <br />
+        <div id = "newUser">
+          New User? <Link to="Register">Click Here!</Link>
+        </div>
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
       </React.Fragment>
