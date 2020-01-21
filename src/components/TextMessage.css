@@ -1,0 +1,6 @@
+.TextMessage input {
+    padding: 8px;
+    border: 1px solid gray;
+    font-size: 12px;
+    justify-content: center;
+  }
