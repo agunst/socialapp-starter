@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import ApiService from "../ApiService";
 
 class RegisterNewUser extends React.Component {
     constructor(props) {
         super(props);
+        this.client = new ApiService();
         this.state = {
             submitted: false,
             formData: {
-                userName: "",
+                username: "",
                 displayName: "",
                 password: ""
             }
@@ -20,7 +22,7 @@ class RegisterNewUser extends React.Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        
+
 
         this.client.postUser(this.state.formData).then(result => {
             this.setState({
@@ -36,7 +38,7 @@ class RegisterNewUser extends React.Component {
     //     this.setState({
     //         submitted: false,
     //         formData: {
-    //             userName: "",
+    //             username: "",
     //             displayName: "",
     //             password: ""
     //         }
@@ -48,7 +50,7 @@ class RegisterNewUser extends React.Component {
         if (this.state.submitted) {
             return (
                 <div>
-                    Thank you, {this.state.formData.userName}!
+                    Thank you, {this.state.formData.username}!
                     <br />
                     Your account has been created - you are now ready to log in!
                     <button><Link to="/">Return to Log In Page</Link></button>
@@ -58,9 +60,9 @@ class RegisterNewUser extends React.Component {
         return (
             <div className="formBox">
                 <form onSubmit={this.handleSubmit}>
-                    <div id="userName">
+                    <div id="username">
                         <label>User Name: </label>
-                        <input onChange={this.handleChange} type="text" name="userName" value={this.state.formData.userName} required />
+                        <input onChange={this.handleChange} type="text" name="username" value={this.state.formData.username} required />
                     </div>
                     <div id="displayName">
                         <label>Display Name: </label>
