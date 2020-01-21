@@ -24,6 +24,11 @@ class HerokuappService {
         );
     }
 
+    getMessages() {
+        return this.client.get(this.url + "/messages");
+    }
+
+
     postLike(id) {
         return this.client.post(this.url + "/likes", { messageId: id });
     }
