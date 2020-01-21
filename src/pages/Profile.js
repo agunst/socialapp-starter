@@ -18,7 +18,7 @@ class Profile extends React.Component {
   
   getUser() {
     return this.client.getUsers().then(result => {
-      console.log(result.data) //works here
+      console.log(result.data) 
       this.setState({
         users: result.data
       })
@@ -30,14 +30,15 @@ class Profile extends React.Component {
   }
 
   render() {
-
+    console.log("href" + window.location.href)
+    console.log("pathname" + window.location.pathname)
    
     return (
       <div>
         <Menu isAuthenticated={this.props.isAuthenticated} />
         <h2>Profile</h2>
         {
-        this.users // does not work here
+        this.users 
         } 
           
       </div>
