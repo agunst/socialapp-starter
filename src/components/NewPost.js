@@ -1,59 +1,55 @@
-import React, { Component } from 'react'
+import React from 'react';
+import ApiService from "../ApiService";
 
-class NewPost extends Component {
+class NewPost extends React.Component {
     constructor(props) {
-        super(props)
-
+        super(props);
+        this.client = new ApiService();
         this.state = {
+            submitted: false,
             message: {
-                username: '',
-                text: '',
-                likes: 0,
+                text: ""
             }
         }
     }
 
     handleChange = (event) => {
-        const { update } = { ...this.state }
-        update[event.target.name] = event.target.value
-        this.setState({
-            update
-        })
+        let message = this.state.message;
+        message[event.target.name] = event.target.value;
+        this.setState({ message });
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
-        this.props.addUpdate({ ...this.state.update })
-        this.setState({
-            message: {
-                username: '',
-                text: '',
-                likes: 0,
-            }
+        event.preventDefault();
+        this.client.postMessage(this.state.message).then(result => {
+            alert("Message sent!")
+            this.setState({
+                submitted: true
+            })
+        }).catch(error => {
+            console.log(error.message)
         })
     }
 
     render() {
         return (
-            <form
-                className="NewPost"
-                onSubmit={this.handleSubmit}>
-
-                <input 
-                    name="update"
-                    placeholder="new text message here"
-                    type="text"
-                    value={this.state.message.text}
-                    onChange={this.handleChange}
-                />
-            
-                <button>Submit</button>
-
-            </form >
-        )
+            <div className="NewPost">
+                <form onSubmit={this.handleSubmit}>
+                    <textarea
+                        type="text"
+                        name="text"
+                        rows="4" cols="50"
+                        placeholder="new message here"
+                        onChange={this.handleChange}
+                        value={this.state.message.text}
+                        required
+                    ></textarea>
+                    <br />
+                    <button>Submit Update</button> <br />
+                </form>
+            </div>
+        );
     }
-
 }
 
 export default NewPost
-
