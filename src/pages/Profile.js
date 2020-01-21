@@ -15,10 +15,20 @@ class Profile extends React.Component {
       userData: {}
     }
   }
-  
+
   getUser() {
+    const loginData = JSON.parse(localStorage.getItem("login"));
+    return this.client.getUser(loginData.result.username).then(result => {
+      console.log(result.data, "individualUser")
+      this.setState({
+        userData: result.data
+      })
+    })
+  }
+  
+  getUsers() {
     return this.client.getUsers().then(result => {
-      console.log(result.data) 
+      console.log(result.data, "all the users") 
       this.setState({
         users: result.data
       })
@@ -27,6 +37,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.getUser();
+    this.getUsers();
   }
 
   render() {
@@ -38,7 +49,7 @@ class Profile extends React.Component {
         <Menu isAuthenticated={this.props.isAuthenticated} />
         <h2>Profile</h2>
         {
-        this.users 
+        JSON.stringify(this.state.userData)
         } 
           
       </div>

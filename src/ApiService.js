@@ -14,6 +14,10 @@ class HerokuappService {
         return this.client.get(this.url + "/users");
     }
 
+    getUser(username) {
+        return this.client.get(this.url + "/users/" + username);
+    }
+
     // 1/21/2020: updated postMessage. "result" was being returned as a string, so we need to use JSON.parse()
     // so that it is returning an object.
     postMessage(messageObject) {
