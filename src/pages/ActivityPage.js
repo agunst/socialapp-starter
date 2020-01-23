@@ -1,6 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+
 
 import hello_dog from '../components/pics/hello_dog.jpg'
+// import menuPets from '../components/pics/menuPets'
 
 import HerokuappService from "../ApiService";
 
@@ -8,8 +10,10 @@ import NewPost from '../components/NewPost'
 import MyPosts from '../components/MyPosts'
 import NewsFeed from '../components/NewsFeed'
 
+import "./pages_css/activityPage.css";
+
 class ActivityPage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.client = new HerokuappService();
         this.state = {
@@ -18,40 +22,49 @@ class ActivityPage extends Component {
         }
     }
 
-    getMessages(){
-      this.client.getMessages().then(result => {
-        this.setState({messages: result.data.messages})
-      })
+    getMessages() {
+        this.client.getMessages().then(result => {
+            this.setState({ messages: result.data.messages })
+        })
     }
 
-    componentDidMount(){
-      this.getMessages();
+    componentDidMount() {
+        this.getMessages();
     }
 
-    addPost = (update) =>{
+    addPost = (update) => {
         this.setState((state, props) => ({
             myposts: [...state.myposts, update]
         }))
     }
 
-    render(){
+    render() {
         return (
+           
+
             <div className="Main">
+                               {/* <img src={menuPets} alt="happy pets" /> */}
                 <div className="FirstColumn">
-                <h3>Update My Status</h3>
-                <NewPost addPost={this.addPost}/>
-                <div className="FirstColumnPic"></div>
-                <img src={hello_dog} alt="happy dog"/>
-                
+                    <div className="Posting">
+                    <h3>Update My Status</h3>
+                    <NewPost addPost={this.addPost} />
+                    </div>
+                    {/* <h3>Update My Status</h3>
+                    <NewPost addPost={this.addPost} /> */}
+                    <div className="FirstColumnPic">
+                    <img src={hello_dog} alt="happy dog" align="right"/>
+                    </div>
+                   
+
                 </div>
-                <div className ="SecondColumn">
-                <h3>My Posts</h3>
-                <MyPosts messagelist={this.state.messages} />
+                <div className="SecondColumn">
+                    <h3>My Posts</h3>
+                    <MyPosts messagelist={this.state.messages} />
                 </div>
-                <div className = "ThirdColumn">
-                <h3>NewsFeed</h3>
-                <NewsFeed messagelist={this.state.messages} />
-                {/* <NewsFeed messagelist={this.client.getMessages()} /> */}
+                <div className="ThirdColumn">
+                    <h3>NewsFeed</h3>
+                    <NewsFeed messagelist={this.state.messages} />
+                    {/* <NewsFeed messagelist={this.client.getMessages()} /> */}
                 </div>
 
 

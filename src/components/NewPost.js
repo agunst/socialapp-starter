@@ -22,7 +22,7 @@ class NewPost extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.client.postMessage(this.state.message).then(result => {
-            alert("Message sent!")
+            // alert("Message sent!")
             this.setState({
                 submitted: true
             })
@@ -38,7 +38,7 @@ class NewPost extends React.Component {
                     <textarea
                         type="text"
                         name="text"
-                        rows="4" cols="50"
+                        rows="4" cols="30"
                         placeholder="new message here"
                         onChange={this.handleChange}
                         value={this.state.message.text}
