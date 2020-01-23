@@ -14,8 +14,8 @@ class HerokuappService {
         return this.client.get(this.url + "/users");
     }
 
-    // 1/21/2020: updated postMessage. "result" was being returned as a string, so we need to use JSON.parse()
-    // so that it is returning an object.
+    // 1/21/2020: updated postMessage. "result" was being returned as a string, so we need 
+    // to use JSON.parse() so that it is returning an object.
     postMessage(messageObject) {
         const loginData = JSON.parse(localStorage.getItem("login"));
         return this.client.post(this.url + "/messages", messageObject, {
@@ -27,7 +27,6 @@ class HerokuappService {
     getMessages() {
         return this.client.get(this.url + "/messages");
     }
-
 
     postLike(id) {
         return this.client.post(this.url + "/likes", { messageId: id });
