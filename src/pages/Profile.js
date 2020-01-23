@@ -12,7 +12,8 @@ class Profile extends React.Component {
     this.client = new HerokuappService();
     this.state = {
       users: [],
-      userData: {}
+      userData: {},
+      isLoaded: false
     }
   }
 
@@ -35,27 +36,32 @@ class Profile extends React.Component {
     })
   }
 
+  // https://stackoverflow.com/questions/47850047/react-how-to-wait-data-before-using-this-state-x-into-a-function
+  // https://scotch.io/tutorials/7-ways-to-implement-conditional-rendering-in-react-applications
   componentDidMount() {
     this.getUser();
-    this.getUsers();
+    //this.getUsers();
   }
 
   render() {
-    console.log("href" + window.location.href)
-    console.log("pathname" + window.location.pathname)
-   
+    
     return (
       <div>
         <Menu isAuthenticated={this.props.isAuthenticated} />
         <h2>Profile</h2>
-        {
-        JSON.stringify(this.state.userData)
-        } 
+
+        <div>
+          <UserProfile
+            userData={this.state.userData.user} 
+            username={this.state.userData.user && this.state.userData.user.username}
+          />
+        </div>
+        
           
       </div>
       
     );
-  }
+    }
 }
 
 export default userIsAuthenticated(Profile);
