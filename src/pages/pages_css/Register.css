@@ -1,0 +1,49 @@
+.formBox {
+    
+    
+    display: flex;
+    width: 960px;
+    background-color: white;
+    height: auto;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.SideColumn {
+    margin-top: 20px;
+}
+
+.MiddleColumn {
+    border: 3px solid #ce7d38;
+    background: linear-gradient(#fff7db, #eccba7);
+    border-radius: 30px;
+    background-color: #fff7db; 
+    padding: 10px;
+    
+}
+
+.Label {
+    align-content: flex-start;
+}
+
+.InputName {
+    margin-left: 20px;
+}
+
+.InputPassword {
+    margin-left: 28px;
+}
+
+.Button {
+    border-radius: 30px;
+    background-color: #c2c7e2; 
+    padding: 10px;
+}
+
+.Form {
+    align-content: center;
+}
+
+
+
+

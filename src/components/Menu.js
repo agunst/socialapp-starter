@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Menu.css";
 import { withAsyncAction } from "../HOCs";
+
+import socialPetwork from './pics/socialPetwork.jpg'
+import background from './pics/background.jpg'
+
+import './components_css/Menu.css';
+// import "./components_css/NavigationBar.css"
 
 class Menu extends React.Component {
   handleLogout = event => {
@@ -10,15 +15,19 @@ class Menu extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
-      <div id="menu">
-        <h1>Kwitter</h1>
+      <div className="NavigationBar" style={{ backgroundImage: `url(${background})` }}>
+        <div className="Petwork">
+          <img src={socialPetwork} alt="The Social Petwork" />
+        </div>
+
         {this.props.isAuthenticated && (
-          <div id="menu-links">
+
+          <div className="Hyperlinks">
             <Link to="/activitypage">Message Feed</Link>
-            <Link to="/" onClick={this.handleLogout}>
-              Logout
-            </Link>
+            <Link to="/profile">My Profile</Link>
+            <Link to="/" onClick={this.handleLogout}>Logout</Link>
           </div>
         )}
       </div>

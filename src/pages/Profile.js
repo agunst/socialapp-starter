@@ -1,5 +1,9 @@
 import React from "react";
+
 import Menu from "../components/Menu";
+
+
+
 import { userIsAuthenticated } from "../HOCs";
 import UserProfile from "../components/userProfile/UserProfile"
 import { Link } from 'react-router-dom';
