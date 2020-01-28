@@ -5,11 +5,13 @@ import hello_dog from '../components/pics/hello_dog.jpg'
 // import menuPets from '../components/pics/menuPets'
 
 import HerokuappService from "../ApiService";
+import { userIsAuthenticated } from "../HOCs"
 
 import NewPost from '../components/NewPost'
 import MyPosts from '../components/MyPosts'
 import NewsFeed from '../components/NewsFeed'
-import NavigationBar from '../components/NavigationBar'
+// import NavigationBar from '../components/NavigationBar'
+import Menu from '../components/Menu'
 
 import "./pages_css/activityPage.css";
 
@@ -44,7 +46,7 @@ class ActivityPage extends Component {
 
             <div className="Parent">
                 <div className="Header">
-                <NavigationBar />
+                <Menu isAuthenticated={this.props.isAuthenticated} />
                 </div>
                 
                 <div className="Main">
@@ -79,4 +81,4 @@ class ActivityPage extends Component {
     }
 }
 
-export default ActivityPage
+export default userIsAuthenticated(ActivityPage)

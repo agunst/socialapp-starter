@@ -15,6 +15,7 @@ class Menu extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div className="NavigationBar" style={{ backgroundImage: `url(${background})` }}>
         <div className="Petwork">

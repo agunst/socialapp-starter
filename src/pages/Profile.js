@@ -11,10 +11,10 @@ class Profile extends React.Component {
     return (
       <>
         
-        <div className="NavigationBar">
+        
           <Menu isAuthenticated={this.props.isAuthenticated} />
           
-        </div>
+        
 
       </>
     );
