@@ -4,7 +4,7 @@ import MyTextMessage from './MyTextMessage'
 
 function MyPosts(props) {
     const listMyPosts = props.messagelist.map((myposts, i) => (
-        <MyTextMessage key={i} newpost={myposts}/>
+        <MyTextMessage updateFeed={props.updateFeed}  key={i} newpost={myposts}/>
     ))
 
     return (

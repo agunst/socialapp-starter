@@ -25,7 +25,6 @@ class ActivityPage extends Component {
         }
     }
 
-<<<<<<< HEAD
     getMessages = () => {
         this.client.getMessages().then(result => {
             let myMessages = result.data.messages.filter(function (message) {
@@ -36,11 +35,6 @@ class ActivityPage extends Component {
                 messages: result.data.messages,
                 myposts: myMessages
             })
-=======
-    getMessages() {
-        this.client.getMessages().then(result => {
-            this.setState({ messages: result.data.messages })
->>>>>>> Michael_CreateMessage
         })
     }
 
@@ -48,67 +42,38 @@ class ActivityPage extends Component {
         this.getMessages();
     }
 
-<<<<<<< HEAD
-    render() {
-        return (
-            <div className="Main">
-                <div className="FirstColumn">
-                    <h3>Update My Status</h3>
-                    <NewPost updateFeed={this.getMessages} />
-                    <div className="FirstColumnPic"></div>
-                    <img src={hello_dog} alt="happy dog" />
-=======
-    addPost = (update) => {
-        this.setState((state, props) => ({
-            myposts: [...state.myposts, update]
-        }))
-    }
-
     render() {
         return (
 
             <div className="Parent">
                 <div className="Header">
-                <Menu isAuthenticated={this.props.isAuthenticated} />
->>>>>>> Michael_CreateMessage
+                    <Menu isAuthenticated={this.props.isAuthenticated} />
                 </div>
-                
+
                 <div className="Main">
 
                     <div className="FirstColumn">
                         <div className="Posting">
                             <h3>Update My Status</h3>
-                            <NewPost addPost={this.addPost} />
+                            <NewPost updateFeed={this.getMessages} />
                         </div>
                         {/* <h3>Update My Status</h3>
                     <NewPost addPost={this.addPost} /> */}
-                    
+
                         <div className="FirstColumnPic">
                             <img src={hello_dog} alt="happy dog" align="right" />
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                <div className="SecondColumn">
-                    <h3>My Posts</h3>
-                    <MyPosts messagelist={this.state.myposts} />
-=======
                     <div className="SecondColumn">
                         <h3>My Posts</h3>
-                        <MyPosts messagelist={this.state.messages} />
+                        <MyPosts messagelist={this.state.myposts} updateFeed={this.getMessages} />
                     </div>
 
                     <div className="ThirdColumn">
                         <h3>NewsFeed</h3>
-                        <NewsFeed messagelist={this.state.messages} />
-                        {/* <NewsFeed messagelist={this.client.getMessages()} /> */}
+                        <NewsFeed messagelist={this.state.messages} updateFeed={this.getMessages}/>
                     </div>
->>>>>>> Michael_CreateMessage
-                </div>
-
-                <div className="ThirdColumn">
-                    <h3>NewsFeed</h3>
-                    <NewsFeed messagelist={this.state.messages} />
                 </div>
             </div>
         )
