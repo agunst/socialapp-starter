@@ -1,24 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
-import paws_like_icon from '../components/pics/paws_like_icon.gif'
-
+import paws_like_icon from '../components/pics/paws_like_icon.gif';
+import HerokuappService from '../ApiService';
 
 class MyTextMessage extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            newpost: {likes:[]} 
-        };
-
+        this.client = new HerokuappService();
     }
 
     deleteHandler = (event) => {
-        console.log(event.target.dataset.messageid)
+        this.client.removeMessage(parseInt(event.target.dataset.messageid)).then(result => {
+            this.props.updateFeed();
+        }).catch(error => {
+            console.log(error.message)
+        })
 
     }
 
-    LikeButton = () => {
-        alert("Hello World")
+    LikeButton = (event) => {
+        this.client.postLike(parseInt(event.target.dataset.messageid)).then(result => {
+            this.props.updateFeed();
+        }).catch(error => {
+            console.log(error.message)
+        })
+        // console.log(event.target.dataset.messageid)
     }
 
 
@@ -39,7 +45,10 @@ class MyTextMessage extends Component {
                     <Card.Body>
                         {this.props.newpost.text}
                     </Card.Body>
-                    <Card.Img variant="bottom" src={paws_like_icon} onClick={this.LikeButton} className="LikeButton"/> | {this.state.newpost.likes.length} | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>
+                    <Card.Img variant="bottom" src={paws_like_icon}
+                       data-messageid={this.props.newpost.id} onClick={this.LikeButton} className="LikeButton" />
+                    | {this.props.newpost.likes.length}
+                    | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>
                 </Card.Body>
             </Card>
         )
