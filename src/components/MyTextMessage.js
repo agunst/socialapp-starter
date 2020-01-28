@@ -15,29 +15,29 @@ class MyTextMessage extends Component {
         }).catch(error => {
             console.log(error.message)
         })
-
     }
 
     LikeButton = (event) => {
         this.client.postLike(parseInt(event.target.dataset.messageid)).then(result => {
             this.props.updateFeed();
         }).catch(error => {
-            console.log(error.message)
+            console.log(error.message);
         })
-        // console.log(event.target.dataset.messageid)
+        console.log()
     }
 
-
+    UnlikeButton = (event) => {
+        // need to update for the LIKE ID not the message id
+        this.client.removeLike(parseInt(event.target.dataset.messageid)).then(result => {
+            this.props.updateFeed();
+        }).catch(error => {
+            console.log(error.message);
+        })
+    }
 
     render() {
         return (
-            // <textarea className="MyTextMessage">
-            //     {props.newpost.text}
-            // </textarea>
             <Card>
-                {/* <b>User:{props.newpost.username}</b><br/>
-                <b>{props.newpost.text}</b><br/>
-                <b>Likes: {props.newpost.likes.length}</b><hr/> */}
                 <Card.Body>
                     <Card.Title>
                         {this.props.newpost.username}
@@ -48,7 +48,9 @@ class MyTextMessage extends Component {
                     <Card.Img variant="bottom" src={paws_like_icon}
                        data-messageid={this.props.newpost.id} onClick={this.LikeButton} className="LikeButton" />
                     | {this.props.newpost.likes.length}
-                    | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>
+                    {/* need to figure the right value for the LIKE ID instead of the message id */}
+                    {/* | <button data-messageid={this.props.newpost.message.id[]}>Unlike</button> */}
+                    | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete Post</button>
                 </Card.Body>
             </Card>
         )

@@ -38,7 +38,10 @@ class HerokuappService {
     }
 
     removeLike(id) {
-        return this.client.delete(this.url + "/likes/" + id);
+        const loginData = JSON.parse(localStorage.getItem("login"));
+        return this.client.delete(this.url + "/likes/" + id, {
+            headers: { Authorization: `Bearer ${loginData.result.token}` }
+        });        
     }
 
     removeMessage(id) {
