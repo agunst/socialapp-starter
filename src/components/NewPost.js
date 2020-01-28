@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiService from "../ApiService";
+import "./components_css/NewPost.css"
 
 class NewPost extends React.Component {
     constructor(props) {
@@ -39,14 +40,14 @@ class NewPost extends React.Component {
                     <textarea
                         type="text"
                         name="text"
-                        rows="4" cols="50"
+                        rows="4" cols="30"
                         placeholder="new message here"
                         onChange={this.handleChange}
                         value={this.state.message.text}
                         required
                     ></textarea>
                     <br />
-                    <button>Submit Update</button> <br />
+                    <button className="NewPostButton">Submit Update</button> <br />
                 </form>
                 {/* Used to verify that state is being updated when text is entered - */}
                 {/* {JSON.stringify(this.state)} */}
