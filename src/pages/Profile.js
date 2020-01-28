@@ -41,8 +41,24 @@ class Profile extends React.Component {
     })
   }
 
-  updateUser() {
-    
+  handleChange = (event) => {
+    let message = this.state.message;
+    message[event.target.name] = event.target.value;
+    this.setState({ message });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.client.postMessage(this.state.message).then(result => {
+      this.props.updateFeed();
+      this.setState({
+        message: {
+          text: ""
+        }
+      })
+    }).catch(error => {
+      console.log(error.message)
+    })
   }
  
   componentDidMount() {
@@ -66,7 +82,24 @@ class Profile extends React.Component {
             about={this.state.userData.user && this.state.userData.user.about}
           />
         </div>
-        
+        <form>
+          <label>
+            Display Name:
+            <input type="text" name="name" />
+          </label>
+          <br />
+          <label>
+            About:
+            <input type="text" name="name" />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input type="text" name="name" />
+          </label>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
           
       </div>
       
