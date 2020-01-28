@@ -1,0 +1,27 @@
+.MainSpace {
+    margin: auto;
+    padding: 1px;
+    height: auto;
+    }
+
+h4 {
+    text-align: center;
+    color: #afb5cf;
+    font-style: italic;
+}
+
+#login-form {
+    align-items: center;
+}
+
+Button {
+    border-radius: 10px;
+    background-color: #c2c7e2; 
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.LoginSpace form {
+    margin: 0 auto;
+    
+}

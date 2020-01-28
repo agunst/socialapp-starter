@@ -57,10 +57,15 @@ class RegisterNewUser extends React.Component {
             return (
                 <div className="Thankyou">
                     <div className="Leftside">
-                    Thank you, {this.state.formData.username}!
+                        <h2>
+                        Thank you, {this.state.formData.username}!
+                        </h2>
+                    {/* Thank you, {this.state.formData.username}! */}
                     <br />
                     Your account has been created - you are now ready to log in!
-                    <button><Link to="/">Return to Log In Page</Link></button>
+                    <br />
+                    <br />
+                    <button className="loginButton"><Link to="/">Return to Log In Page</Link></button>
                     </div>
                     <div className="Rightside">
                         <img src={cat_approved} alt="cat with thumb up" align="left" />

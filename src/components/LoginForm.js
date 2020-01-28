@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-
+          <br />
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -39,19 +39,19 @@ class LoginForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-
+          <br />
           <button type="submit" disabled={loading}>
             Login
           </button>
+          <br />
+         
+          <div id = "newUser">
+          New User? <Link to="Register">Click Here!</Link>
+        </div>
 
         </form>
 
-        <br />
-        <br />
-
-        <div id="newUser">
-          New User? <Link to="Register">Click Here!</Link>
-        </div>
+        
         
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
