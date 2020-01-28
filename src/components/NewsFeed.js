@@ -2,7 +2,7 @@ import React from 'react'
 import MyTextMessage from './MyTextMessage'
 
 
-function NewsFeed (props) {
+function NewsFeed(props) {
     const listMyPosts = props.messagelist.map((message, i) => (
         <MyTextMessage key={i} newpost={message}/>
     ))

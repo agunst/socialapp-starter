@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiService from "../ApiService";
+import "./components_css/NewPost.css"
 
 class NewPost extends React.Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class NewPost extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.client.postMessage(this.state.message).then(result => {
-            // alert("Message sent!")
+            alert("Message sent!")
             this.setState({
                 submitted: true
             })
@@ -45,7 +46,7 @@ class NewPost extends React.Component {
                         required
                     ></textarea>
                     <br />
-                    <button>Submit Update</button> <br />
+                    <button className="NewPostButton">Submit Update</button> <br />
                 </form>
             </div>
         );

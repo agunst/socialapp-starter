@@ -16,10 +16,9 @@ class MyTextMessage extends Component {
         console.log(event.target.dataset.messageid)
 
     }
+
     LikeButton = () => {
         alert("Hello World")
-
-        
     }
 
 
@@ -40,7 +39,7 @@ class MyTextMessage extends Component {
                     <Card.Body>
                         {this.props.newpost.text}
                     </Card.Body>
-                    <Card.Img variant="bottom" src={paws_like_icon} onClick={this.LikeButton} /> | {this.state.newpost.likes.length} | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>
+                    <Card.Img variant="bottom" src={paws_like_icon} onClick={this.LikeButton} className="LikeButton"/> | {this.state.newpost.likes.length} | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>
                 </Card.Body>
             </Card>
         )

@@ -4,3 +4,7 @@
     font-size: 12px;
     justify-content: center;
   }
+
+  .LikeButton hover {
+transform: scale (1.2);
+  }
