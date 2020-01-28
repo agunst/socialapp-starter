@@ -7,7 +7,6 @@ class NewPost extends React.Component {
         super(props);
         this.client = new ApiService();
         this.state = {
-            submitted: false,
             message: {
                 text: ""
             }
@@ -23,9 +22,11 @@ class NewPost extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.client.postMessage(this.state.message).then(result => {
-            alert("Message sent!")
+            this.props.updateFeed();
             this.setState({
-                submitted: true
+                message: {
+                    text: ""
+                }
             })
         }).catch(error => {
             console.log(error.message)
@@ -48,6 +49,8 @@ class NewPost extends React.Component {
                     <br />
                     <button className="NewPostButton">Submit Update</button> <br />
                 </form>
+                {/* Used to verify that state is being updated when text is entered - */}
+                {/* {JSON.stringify(this.state)} */}
             </div>
         );
     }
