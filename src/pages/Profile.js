@@ -36,12 +36,11 @@ class Profile extends React.Component {
     })
   }
 
-  // https://stackoverflow.com/questions/47850047/react-how-to-wait-data-before-using-this-state-x-into-a-function
-  // https://scotch.io/tutorials/7-ways-to-implement-conditional-rendering-in-react-applications
+ 
   componentDidMount() {
     this.getUser();
     //this.getUsers();
-  }
+  } 
 
   render() {
     
@@ -52,8 +51,10 @@ class Profile extends React.Component {
 
         <div>
           <UserProfile
+            picture={this.state.userData.user && this.state.userData.user.pictureLocation}
             userData={this.state.userData.user} 
             username={this.state.userData.user && this.state.userData.user.username}
+            displayName={this.state.userData.user && this.state.userData.user.displayName}
           />
         </div>
         

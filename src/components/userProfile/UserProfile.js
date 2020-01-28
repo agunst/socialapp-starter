@@ -5,12 +5,16 @@ import Profile from "../../pages/Profile";
 function UserProfile(props) {
     return (
         <div>
-            User: {JSON.stringify(props.userData)}
+            
+            <img src={props.picture}/>
+            <br/>
             Username: {props.username}
+            <br />
+            Display Name: {props.displayName}
         </div>
     )
 }
 
 export default UserProfile;
-// {JSON.stringify(props.userData)}
+// User: {JSON.stringify(props.userData)}
 // {props.userData}
