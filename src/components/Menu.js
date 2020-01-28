@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withAsyncAction } from "../HOCs";
 
-import socialPetwork from './pics/socialPetwork.jpg'
+import socialPetwork2 from './pics/socialPetwork2.jpg'
 import background from './pics/background.jpg'
 
 import './components_css/Menu.css';
@@ -19,7 +19,7 @@ class Menu extends React.Component {
     return (
       <div className="NavigationBar" style={{ backgroundImage: `url(${background})` }}>
         <div className="Petwork">
-          <img src={socialPetwork} alt="The Social Petwork" />
+          <img src={socialPetwork2} alt="The Social Petwork" />
         </div>
 
         {this.props.isAuthenticated && (

@@ -14,8 +14,8 @@
 
 #menu-links a {
   padding-right: 0.5em;
-  color: darkblue;
-  text-decoration: underline;
+  color: gold;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -36,4 +36,9 @@
     padding-right: 30px;
     padding-top: 140px;
     align-items: baseline;
+    color: black;
   }
+
+
+
+  
