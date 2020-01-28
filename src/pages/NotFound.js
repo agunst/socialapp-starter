@@ -1,13 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./pages_css/NotFound.css";
+
+import errorPets from './pages_pics/errorPets.jpg';
+
+
 class NotFound extends React.Component {
   render() {
     return (
-      <>
-        <p>Page not found for {this.props.location.pathname}</p>
+      <div className="ErrorPage">
+        
+        <img src={errorPets} alt="Sympathetic Pets" align="center" />
+
+        <h3>Error 404: Page not Found
+          {/* {this.props.location.pathname} */}
+        </h3>
         <Link to="/">Go Home</Link>
-      </>
+      </div>
     );
   }
 }
