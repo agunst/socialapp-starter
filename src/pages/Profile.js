@@ -1,14 +1,13 @@
 import React from "react";
 
 import Menu from "../components/Menu";
-
-
-
 import { userIsAuthenticated } from "../HOCs";
 import UserProfile from "../components/userProfile/UserProfile"
 import { Link } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
 import HerokuappService from "../ApiService";
+
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -17,7 +16,9 @@ class Profile extends React.Component {
     this.state = {
       users: [],
       userData: {},
-      isLoaded: false
+      isLoaded: false,
+      
+    
     }
   }
 
@@ -40,6 +41,9 @@ class Profile extends React.Component {
     })
   }
 
+  updateUser() {
+    
+  }
  
   componentDidMount() {
     this.getUser();
@@ -59,6 +63,7 @@ class Profile extends React.Component {
             userData={this.state.userData.user} 
             username={this.state.userData.user && this.state.userData.user.username}
             displayName={this.state.userData.user && this.state.userData.user.displayName}
+            about={this.state.userData.user && this.state.userData.user.about}
           />
         </div>
         
