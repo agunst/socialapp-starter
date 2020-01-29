@@ -22,6 +22,7 @@ border-bottom: 3px solid #728de2;
 }
 
 .SecondColumn {
+    width: 35%;
     border: 3px solid #ce7d38;
     background: linear-gradient(#fff7db, #eccba7);
     border-radius: 30px;
@@ -30,6 +31,7 @@ border-bottom: 3px solid #728de2;
     }
 
 .ThirdColumn {
+    width: 35%;
     border: 3px solid #ce7d38;
     border-radius: 30px;
     background-color: #fff7db; 
