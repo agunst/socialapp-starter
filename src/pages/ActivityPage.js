@@ -52,16 +52,15 @@ class ActivityPage extends Component {
                             <img src={hello_dog} alt="happy dog" align="right" />
                         </div>
                     </div>
+
                     <div className="SecondColumn">
                         <div clasName="ColumnHeader">
                         <h3>My Posts</h3>
-                        </div>
-                        
-                        <MyPosts messagelist={this.state.myposts} />
+                        <MyPosts messagelist={this.state.myposts} updateFeed={this.getMessages} />
                     </div>
                     <div className="ThirdColumn">
                         <h3>NewsFeed</h3>
-                        <NewsFeed messagelist={this.state.messages} />
+                        <NewsFeed messagelist={this.state.messages} updateFeed={this.getMessages}/>
                     </div>
                 </div>
             </div>
