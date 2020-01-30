@@ -26,7 +26,7 @@ class Menu extends React.Component {
 
           <div className="Hyperlinks">
             <Link to="/activitypage">Message Feed</Link>
-            <Link to="/profile">My Profile</Link>
+            <Link to="/profile/:username">My Profile</Link>
             <Link to="/" onClick={this.handleLogout}>Logout</Link>
           </div>
         )}

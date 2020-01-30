@@ -111,7 +111,7 @@ class RegisterNewUser extends React.Component {
                             />
                         </div>
                         <br />
-                        <div className="password">
+                        <div className="password-r">
                             <label className="Label">Password: </label>
                             <input className="InputPassword"
                                 onChange={this.handleChange}

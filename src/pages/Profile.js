@@ -5,7 +5,13 @@ import { userIsAuthenticated } from "../HOCs";
 import UserProfile from "../components/userProfile/UserProfile"
 import { Link } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
+import "./pages_css/profile.css";
+
+
 import HerokuappService from "../ApiService";
+
+import kitty2_icon from './pages_pics/kitty2_icon.jpg';
+import doggy2_icon from './pages_pics/doggy2_icon.jpg';
 
 
 
@@ -17,8 +23,8 @@ class Profile extends React.Component {
       users: [],
       userData: {},
       isLoaded: false,
-      
-    
+
+
     }
   }
 
@@ -31,10 +37,10 @@ class Profile extends React.Component {
       })
     })
   }
-  
+
   getUsers() {
     return this.client.getUsers().then(result => {
-      console.log(result.data, "all the users") 
+      console.log(result.data, "all the users")
       this.setState({
         users: result.data
       })
@@ -51,56 +57,75 @@ class Profile extends React.Component {
     event.preventDefault();
 
   }
- 
+
   componentDidMount() {
     this.getUser();
     //this.getUsers();
-  } 
+  }
 
   render() {
-    
-    return (
-      <div>
-        <Menu isAuthenticated={this.props.isAuthenticated} />
-        <h2>Profile</h2>
 
-        <div>
-          <UserProfile
-            picture={this.state.userData.user && this.state.userData.user.pictureLocation}
-            userData={this.state.userData.user} 
-            username={this.state.userData.user && this.state.userData.user.username}
-            displayName={this.state.userData.user && this.state.userData.user.displayName}
-            about={this.state.userData.user && this.state.userData.user.about}
-          />
-          <br /><br />
+    return (
+      <div className="PageAll">
+        <div className="MenuBar">
+          <Menu isAuthenticated={this.props.isAuthenticated} />
         </div>
-        <form>
-          <label>
-            Display Name:
-            <input type="text" name="displayName" />
-          </label>
-          <br />
-          <label>
-            About:
-            <input type="text" name="about" />
-          </label>
-          <br />
-          <label>
-            Password:
-            <input type="text" name="password" />
-          </label>
-          <br />
-          <input type="submit" value="Submit" />
-        </form>
-          
+
+        <div className="Content">
+
+          <div className="LeftSideColumn">
+            <img src={kitty2_icon} alt="happy cat" align="right" />
+          </div>
+
+          <div className="ProfileColumn">
+
+
+            <div className="ProfileInfo">
+              <h2>{this.state.userData.user && this.state.userData.user.username}</h2>
+              <UserProfile
+                picture={this.state.userData.user && this.state.userData.user.pictureLocation}
+                // userData={this.state.userData.user}
+                // username={this.state.userData.user && this.state.userData.user.username}
+                // displayName={this.state.userData.user && this.state.userData.user.displayName}
+                about={this.state.userData.user && this.state.userData.user.about}
+              />
+              <br /><br />
+              <h3>Update your Profile </h3>
+
+              <form className="update-profile">
+                <label>
+                  Display Name:
+            <input className="display-name" type="text" name="displayName" />
+                </label>
+                <br />
+                <label>
+                  About:
+            <input className="about" type="text" name="about" />
+                </label>
+                <br />
+                <label>
+                  Password:
+            <input className="password" type="text" name="password" />
+                </label>
+                <br />
+                <input className="loginButton2" type="submit" value="Submit" />
+              </form>
+            </div>
+          </div>
+
+          <div className="RightSideColumn">
+            <img src={doggy2_icon} alt="happy dog" align="left" />
+          </div >
+
+        </div>
       </div>
-      
+
     );
-    }
+  }
 }
 
 export default userIsAuthenticated(Profile);
-/*
+    /*
       pictureLocation: "",
       username: "",
       displayName: "",
