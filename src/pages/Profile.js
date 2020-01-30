@@ -17,8 +17,8 @@ class Profile extends React.Component {
       users: [],
       userData: {},
       isLoaded: false,
-      
-    
+      formData: {}
+
     }
   }
 
@@ -31,34 +31,51 @@ class Profile extends React.Component {
       })
     })
   }
-  
+
   getUsers() {
     return this.client.getUsers().then(result => {
-      console.log(result.data, "all the users") 
+      console.log(result.data, "all the users")
       this.setState({
         users: result.data
       })
     })
   }
 
-  handleChange = (event) => {
-    let userData = this.state.userData.user;
-    userData[event.target.name] = event.target.value;
-    this.setState({ userData });
+  onChange = e => {
+    let userData = this.state.userData
+    userData[e.target.name] = e.target.value
+
+    let pictureSet = this.state.formData.picture
+    if(e.target.files != undefined){
+      pictureSet = e.target.files[0]
+    }
+
+    this.setState({
+      picture:pictureSet,
+      userData
+    })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
+  fileUpload(file){
+    const formData = new FormData()
+    formData.append("picture", file)
+    return formData
   }
- 
+
+  handleSubmit = event => {
+    event.preventDefault()
+    const formData = this.fileUpload(this.state.picture)
+    const loginData = JSON.parse(localStorage.getItem("login"))
+    this.client.uploadPicture(formData)
+  }
+  
   componentDidMount() {
     this.getUser();
     //this.getUsers();
-  } 
+  }
 
   render() {
-    
+
     return (
       <div>
         <Menu isAuthenticated={this.props.isAuthenticated} />
@@ -67,18 +84,20 @@ class Profile extends React.Component {
         <div>
           <UserProfile
             picture={this.state.userData.user && this.state.userData.user.pictureLocation}
-            userData={this.state.userData.user} 
+            userData={this.state.userData.user}
             username={this.state.userData.user && this.state.userData.user.username}
             displayName={this.state.userData.user && this.state.userData.user.displayName}
             about={this.state.userData.user && this.state.userData.user.about}
           />
           <br /><br />
         </div>
-        <div>
-          <input type="file" onChange={this.fileChangedHandler} />
-          <button onClick={this.uploadHandler}>Upload Photo</button>
-          <br /><br />
-        </div>
+
+        <form>
+          <input name="picture" type="file" onChange={this.onChange}></input>
+          <button onClick={this.handleSubmit}>Upload Image</button>
+        </form>
+
+        
         <form>
           <label>
             Display Name:
@@ -97,11 +116,11 @@ class Profile extends React.Component {
           <br />
           <input type="submit" value="Submit" />
         </form>
-          
+
       </div>
-      
+
     );
-    }
+  }
 }
 
 export default userIsAuthenticated(Profile);

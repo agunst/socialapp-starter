@@ -28,7 +28,7 @@ class HerokuappService {
 
     uploadPicture(picObject) {
         const loginData = JSON.parse(localStorage.getItem("login"));
-        return this.client.patch(this.url + "/users/" + loginData.result.username + "picture", picObject, {
+        return this.client.put(this.url + "/users/" + loginData.result.username + "/picture/", picObject, {
             headers: { Authorization: `Bearer ${loginData.result.token}` }
         }
         );
