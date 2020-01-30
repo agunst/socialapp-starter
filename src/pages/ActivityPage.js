@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import hello_dog from '../components/pics/hello_dog.jpg'
+import square from './pages_pics/square.gif'
 // import menuPets from '../components/pics/menuPets'
 import HerokuappService from "../ApiService";
 import { userIsAuthenticated } from "../HOCs"
@@ -52,7 +53,10 @@ class ActivityPage extends Component {
                         </div>
                     </div>
                     <div className="SecondColumn">
+                        <div clasName="ColumnHeader">
                         <h3>My Posts</h3>
+                        </div>
+                        
                         <MyPosts messagelist={this.state.myposts} />
                     </div>
                     <div className="ThirdColumn">
