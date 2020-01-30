@@ -1,19 +1,11 @@
 import React from "react";
-
 import Menu from "../components/Menu";
 import { userIsAuthenticated } from "../HOCs";
 import UserProfile from "../components/userProfile/UserProfile"
 import { Link } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
 import "./pages_css/profile.css";
-
-
 import HerokuappService from "../ApiService";
-
-import kitty2_icon from './pages_pics/kitty2_icon.jpg';
-import doggy2_icon from './pages_pics/doggy2_icon.jpg';
-
-
 
 class Profile extends React.Component {
   constructor(props) {
@@ -24,8 +16,6 @@ class Profile extends React.Component {
       userData: {},
       isLoaded: false,
       formData: {}
-
-
     }
   }
 
@@ -49,23 +39,24 @@ class Profile extends React.Component {
   }
 
   onFileChange = e => {
-    let userData = this.state.userData
-    userData[e.target.name] = e.target.value
+    let formData = this.state.formData
+    formData[e.target.name] = e.target.value
 
     let pictureSet = this.state.formData.picture
-    if(e.target.files != undefined){
+    if (e.target.files != undefined) {
       pictureSet = e.target.files[0]
     }
 
     this.setState({
-      picture:pictureSet,
-      userData
+      picture: pictureSet,
+      formData
     })
   }
 
-  fileUpload(file){
+  fileUpload(file) {
     const formData = new FormData()
     formData.append("picture", file)
+
     return formData
   }
 
@@ -73,12 +64,18 @@ class Profile extends React.Component {
     event.preventDefault()
     const formData = this.fileUpload(this.state.picture)
     const loginData = JSON.parse(localStorage.getItem("login"))
-    this.client.uploadPicture(formData)
+    this.client.uploadPicture(formData).then(() => {
+      this.getUser();
+      this.setState({
+        formData: {
+          picture: ""
+        }
+      })
+    })
   }
 
   componentDidMount() {
     this.getUser();
-    //this.getUsers();
   }
 
   render() {
@@ -100,11 +97,11 @@ class Profile extends React.Component {
         </div>
 
         <form>
-          <input name="picture" type="file" onChange={this.onFileChange}></input>
+          <p>Please select an image that is 200KB or smaller.</p>
+          <input value={this.state.formData.picture} name="picture" type="file" onChange={this.onFileChange}></input>
           <button onClick={this.handleSubmit}>Upload Image</button>
         </form>
-
-        
+        <br/>
         <form>
           <label>
             Display Name:
@@ -122,19 +119,10 @@ class Profile extends React.Component {
           </label>
           <br />
           <input type="submit" value="Submit" />
-        </form>     
+        </form>
       </div>
     );
   }
 }
 
 export default userIsAuthenticated(Profile);
-    /*
-      pictureLocation: "",
-      username: "",
-      displayName: "",
-      about: "",
-      googleId: "",
-      createdAt: "",
-      updatedAt: ""
-*/
