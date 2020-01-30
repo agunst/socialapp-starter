@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import paws_like_icon from '../components/pics/paws_like_icon.gif';
+import blue_paws_like_icon from '../components/pics/blue_paws_like_icon.gif';
 import HerokuappService from '../ApiService';
 
 class MyTextMessage extends Component {
@@ -15,7 +16,6 @@ class MyTextMessage extends Component {
         }).catch(error => {
             console.log(error.message)
         })
-
     }
 
     LikeButton = (event) => {
@@ -24,20 +24,37 @@ class MyTextMessage extends Component {
         }).catch(error => {
             console.log(error.message)
         })
-        // console.log(event.target.dataset.messageid)
     }
 
 
+    Unlike = (event) => {
+        this.client.removeLike(parseInt(event.target.dataset.likeid)).then(result => {
+            this.props.updateFeed();
+        }).catch(error => {
+            console.log(error.message)
+        })
+    }
 
     render() {
+        let likeButtonImage = paws_like_icon;
+        let likeID;
+        let likeChanger = this.LikeButton;
+        let deletebutton;
+        const loginData = JSON.parse(localStorage.getItem("login"));
+        for (let i = 0; i < this.props.newpost.likes.length; i++) {
+            if (this.props.newpost.likes[i].username === loginData.result.username) {
+                likeButtonImage = blue_paws_like_icon;
+                likeID = this.props.newpost.likes[i].id;
+                likeChanger = this.Unlike;
+            }
+        }
+
+        if (this.props.newpost.username === loginData.result.username){
+            deletebutton = <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>;
+        }
+
         return (
-            // <textarea className="MyTextMessage">
-            //     {props.newpost.text}
-            // </textarea>
             <Card>
-                {/* <b>User:{props.newpost.username}</b><br/>
-                <b>{props.newpost.text}</b><br/>
-                <b>Likes: {props.newpost.likes.length}</b><hr/> */}
                 <Card.Body>
                     <Card.Title>
                         {this.props.newpost.username}
@@ -45,15 +62,14 @@ class MyTextMessage extends Component {
                     <Card.Body>
                         {this.props.newpost.text}
                     </Card.Body>
-                    <Card.Img variant="bottom" src={paws_like_icon}
-                       data-messageid={this.props.newpost.id} onClick={this.LikeButton} className="LikeButton" />
+                    <Card.Img id="pawLike" variant="bottom" src={likeButtonImage}
+                        data-messageid={this.props.newpost.id} data-likeid={likeID} onClick={likeChanger} className="LikeButton" />
                     | {this.props.newpost.likes.length}
-                    | <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>
+                    | {deletebutton} 
                 </Card.Body>
             </Card>
         )
     }
-
 }
 
 export default MyTextMessage
