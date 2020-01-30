@@ -7,12 +7,7 @@ function UserProfile(props) {
     return (
         <div>
             <img src={"http://socialapp-api.herokuapp.com" + props.picture} width="200px" height="200px"/>
-
-          {
-            //<img src={doggyPic} width="200px" height="200px" />
-            //<img src={kittyPic} width="200px" height="200px" />
-          }
-
+            
             <br/>
             {/* Username: {props.username} */}
             {/* <br /> */}
