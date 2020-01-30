@@ -1,10 +1,9 @@
 import React from 'react';
-// import MyTextMessage from './MyTextMessage'
-import AllUserMessage from './AllUserMessage';
+import MyTextMessage from './MyTextMessage'
 
 function NewsFeed(props) {
     const listMyPosts = props.messagelist.map((message, i) => (
-        <AllUserMessage
+        <MyTextMessage
             updateFeed={props.updateFeed}
             key={i}
             newpost={message} />

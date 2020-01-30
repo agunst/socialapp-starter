@@ -5,7 +5,13 @@ import { userIsAuthenticated } from "../HOCs";
 import UserProfile from "../components/userProfile/UserProfile"
 import { Link } from 'react-router-dom';
 import { Route, Switch } from "react-router-dom";
+import "./pages_css/profile.css";
+
+
 import HerokuappService from "../ApiService";
+
+import kitty2_icon from './pages_pics/kitty2_icon.jpg';
+import doggy2_icon from './pages_pics/doggy2_icon.jpg';
 
 
 
@@ -18,6 +24,7 @@ class Profile extends React.Component {
       userData: {},
       isLoaded: false,
       formData: {}
+
 
     }
   }
@@ -68,7 +75,7 @@ class Profile extends React.Component {
     const loginData = JSON.parse(localStorage.getItem("login"))
     this.client.uploadPicture(formData)
   }
-  
+
   componentDidMount() {
     this.getUser();
     //this.getUsers();
@@ -115,16 +122,14 @@ class Profile extends React.Component {
           </label>
           <br />
           <input type="submit" value="Submit" />
-        </form>
-
+        </form>     
       </div>
-
     );
   }
 }
 
 export default userIsAuthenticated(Profile);
-/*
+    /*
       pictureLocation: "",
       username: "",
       displayName: "",
