@@ -41,7 +41,7 @@ class Profile extends React.Component {
     })
   }
 
-  onChange = e => {
+  onFileChange = e => {
     let userData = this.state.userData
     userData[e.target.name] = e.target.value
 
@@ -93,7 +93,7 @@ class Profile extends React.Component {
         </div>
 
         <form>
-          <input name="picture" type="file" onChange={this.onChange}></input>
+          <input name="picture" type="file" onChange={this.onFileChange}></input>
           <button onClick={this.handleSubmit}>Upload Image</button>
         </form>
 
