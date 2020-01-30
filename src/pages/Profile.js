@@ -23,7 +23,7 @@ class Profile extends React.Component {
       users: [],
       userData: {},
       isLoaded: false,
-
+      formData: {}
 
     }
   }
@@ -47,15 +47,39 @@ class Profile extends React.Component {
     })
   }
 
-  handleChange = (event) => {
-    let userData = this.state.userData.user;
-    userData[event.target.name] = event.target.value;
-    this.setState({ userData });
+  onFileChange = e => {
+    let formData = this.state.formData
+    formData[e.target.name] = e.target.value
+
+    let pictureSet = this.state.formData.picture
+    if (e.target.files != undefined) {
+      pictureSet = e.target.files[0]
+    }
+
+    this.setState({
+      picture: pictureSet,
+      formData
+    })
+  }
+
+  fileUpload(file) {
+    const formData = new FormData()
+    formData.append("picture", file)
+    return formData
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+    const formData = this.fileUpload(this.state.picture)
+    const loginData = JSON.parse(localStorage.getItem("login"))
+    this.client.uploadPicture(formData).then(() => {
+      this.getUser();
+      this.setState({
+        formData: {
+          picture: ""
+        }
+      })
+    })
   }
 
   componentDidMount() {
@@ -89,7 +113,13 @@ class Profile extends React.Component {
                 // displayName={this.state.userData.user && this.state.userData.user.displayName}
                 about={this.state.userData.user && this.state.userData.user.about}
               />
-              <br /><br />
+              <br />
+              <form>
+                <p style={{textAlign:"center"}}>Please select a picture that is 200kb or less</p>
+                <input value={this.state.formData.picture} name="picture" type="file" onChange={this.onFileChange}></input>
+                <button onClick={this.handleSubmit}>Upload Image</button>
+              </form>
+              <br />
               <h3>Update your Profile </h3>
 
               <form className="update-profile">
@@ -126,11 +156,11 @@ class Profile extends React.Component {
 
 export default userIsAuthenticated(Profile);
     /*
-      pictureLocation: "",
-      username: "",
-      displayName: "",
-      about: "",
-      googleId: "",
-      createdAt: "",
-      updatedAt: ""
+pictureLocation: "",
+username: "",
+displayName: "",
+about: "",
+googleId: "",
+createdAt: "",
+updatedAt: ""
 */
