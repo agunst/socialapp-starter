@@ -23,6 +23,7 @@ class Profile extends React.Component {
       users: [],
       userData: {},
       isLoaded: false,
+      formData: {}
 
 
     }
@@ -47,15 +48,32 @@ class Profile extends React.Component {
     })
   }
 
-  handleChange = (event) => {
-    let userData = this.state.userData.user;
-    userData[event.target.name] = event.target.value;
-    this.setState({ userData });
+  onFileChange = e => {
+    let userData = this.state.userData
+    userData[e.target.name] = e.target.value
+
+    let pictureSet = this.state.formData.picture
+    if(e.target.files != undefined){
+      pictureSet = e.target.files[0]
+    }
+
+    this.setState({
+      picture:pictureSet,
+      userData
+    })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+  fileUpload(file){
+    const formData = new FormData()
+    formData.append("picture", file)
+    return formData
+  }
 
+  handleSubmit = event => {
+    event.preventDefault()
+    const formData = this.fileUpload(this.state.picture)
+    const loginData = JSON.parse(localStorage.getItem("login"))
+    this.client.uploadPicture(formData)
   }
 
   componentDidMount() {
@@ -66,60 +84,46 @@ class Profile extends React.Component {
   render() {
 
     return (
-      <div className="PageAll">
-        <div className="MenuBar">
-          <Menu isAuthenticated={this.props.isAuthenticated} />
+      <div>
+        <Menu isAuthenticated={this.props.isAuthenticated} />
+        <h2>Profile</h2>
+
+        <div>
+          <UserProfile
+            picture={this.state.userData.user && this.state.userData.user.pictureLocation}
+            userData={this.state.userData.user}
+            username={this.state.userData.user && this.state.userData.user.username}
+            displayName={this.state.userData.user && this.state.userData.user.displayName}
+            about={this.state.userData.user && this.state.userData.user.about}
+          />
+          <br /><br />
         </div>
 
-        <div className="Content">
+        <form>
+          <input name="picture" type="file" onChange={this.onFileChange}></input>
+          <button onClick={this.handleSubmit}>Upload Image</button>
+        </form>
 
-          <div className="LeftSideColumn">
-            <img src={kitty2_icon} alt="happy cat" align="right" />
-          </div>
-
-          <div className="ProfileColumn">
-
-
-            <div className="ProfileInfo">
-              <h2>{this.state.userData.user && this.state.userData.user.username}</h2>
-              <UserProfile
-                picture={this.state.userData.user && this.state.userData.user.pictureLocation}
-                // userData={this.state.userData.user}
-                // username={this.state.userData.user && this.state.userData.user.username}
-                // displayName={this.state.userData.user && this.state.userData.user.displayName}
-                about={this.state.userData.user && this.state.userData.user.about}
-              />
-              <br /><br />
-              <h3>Update your Profile </h3>
-
-              <form className="update-profile">
-                <label>
-                  Display Name:
-            <input className="display-name" type="text" name="displayName" />
-                </label>
-                <br />
-                <label>
-                  About:
-            <input className="about" type="text" name="about" />
-                </label>
-                <br />
-                <label>
-                  Password:
-            <input className="password" type="text" name="password" />
-                </label>
-                <br />
-                <input className="loginButton2" type="submit" value="Submit" />
-              </form>
-            </div>
-          </div>
-
-          <div className="RightSideColumn">
-            <img src={doggy2_icon} alt="happy dog" align="left" />
-          </div >
-
-        </div>
+        
+        <form>
+          <label>
+            Display Name:
+            <input type="text" name="displayName" />
+          </label>
+          <br />
+          <label>
+            About:
+            <input type="text" name="about" />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input type="text" name="password" />
+          </label>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>     
       </div>
-
     );
   }
 }

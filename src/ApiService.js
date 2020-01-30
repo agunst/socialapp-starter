@@ -25,6 +25,14 @@ class HerokuappService {
         }
         );
     }
+
+    uploadPicture(picObject) {
+        const loginData = JSON.parse(localStorage.getItem("login"));
+        return this.client.put(this.url + "/users/" + loginData.result.username + "/picture/", picObject, {
+            headers: { Authorization: `Bearer ${loginData.result.token}` }
+        }
+        );
+    }
     // 1/21/2020: updated postMessage. "result" was being returned as a string, so we need to use JSON.parse()
     // so that it is returning an object.
     postMessage(messageObject) {
