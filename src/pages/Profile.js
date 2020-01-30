@@ -74,6 +74,11 @@ class Profile extends React.Component {
           />
           <br /><br />
         </div>
+        <div>
+          <input type="file" onChange={this.fileChangedHandler} />
+          <button onClick={this.uploadHandler}>Upload Photo</button>
+          <br /><br />
+        </div>
         <form>
           <label>
             Display Name:
