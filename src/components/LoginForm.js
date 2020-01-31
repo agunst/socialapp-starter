@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Spinner from "react-spinkit";
 import { withAsyncAction } from "../HOCs";
-
 import './components_css/LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -22,7 +21,6 @@ class LoginForm extends React.Component {
     return (
       <React.Fragment>
         <form id="login-form" onSubmit={this.handleLogin}>
-
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -44,15 +42,11 @@ class LoginForm extends React.Component {
             Login
           </button>
           <br />
-         
-          <div id = "newUser">
-          New User? <Link to="Register">Click Here!</Link>
-        </div>
-
+          <div id="newUser">
+            New User? <Link to="Register">Click Here!</Link>
+          </div>
         </form>
 
-        
-        
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
       </React.Fragment>

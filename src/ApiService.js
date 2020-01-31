@@ -5,7 +5,7 @@ class HerokuappService {
         this.url = url;
         this.client = client;
     }
-    
+
     postUser(userObject) {
         return this.client.post(this.url + "/users", userObject);
     }

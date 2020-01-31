@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import ApiService from "../ApiService";
-
 import kitty_icon from '../components/pics/kitty_icon.jpg'
 import doggy_icon from '../components/pics/doggy_icon.jpg';
 import cat_approved from '../components/pics/cat_approved.jpg';
-
 import "./pages_css/Register.css";
 
 class RegisterNewUser extends React.Component {
@@ -21,15 +19,15 @@ class RegisterNewUser extends React.Component {
             }
         }
     }
+
     handleChange = (event) => {
         let formData = this.state.formData;
         formData[event.target.name] = event.target.value;
         this.setState({ formData });
     }
+
     handleSubmit = (event) => {
         event.preventDefault();
-
-
         this.client.postUser(this.state.formData).then(result => {
             this.setState({
                 submitted: true
@@ -38,18 +36,6 @@ class RegisterNewUser extends React.Component {
             console.log(error.message)
         })
     }
-    // Following code copied from react-demo-app. 
-    // Saving in case we need it later.
-    // resetForm = (event) => {
-    //     this.setState({
-    //         submitted: false,
-    //         formData: {
-    //             username: "",
-    //             displayName: "",
-    //             password: ""
-    //         }
-    //     })
-    // }
 
     render() {
         //show the thank you message if the form has been submitted
@@ -58,25 +44,18 @@ class RegisterNewUser extends React.Component {
                 <div className="Thankyou">
                     <div className="Leftside">
                         <h2>
-                        Thank you, {this.state.formData.username}!
+                            Thank you, {this.state.formData.username}!
                         </h2>
-                    {/* Thank you, {this.state.formData.username}! */}
-                    <br />
-                    Your account has been created - you are now ready to log in!
-                    <br />
-                    <br />
-                    <button className="loginButton"><Link to="/">Return to Log In Page</Link></button>
+                        <br />
+                        Your account has been created - you are now ready to log in!
+                        <br />
+                        <br />
+                        <button className="loginButton"><Link to="/">Return to Log In Page</Link></button>
                     </div>
                     <div className="Rightside">
                         <img src={cat_approved} alt="cat with thumb up" align="left" />
                     </div>
                 </div>
-                // <div>
-                //     Thank you, {this.state.formData.username}!
-                //     <br />
-                //     Your account has been created - you are now ready to log in!
-                //     <button><Link to="/">Return to Log In Page</Link></button>
-                // </div>
             );
         };
 
@@ -128,22 +107,6 @@ class RegisterNewUser extends React.Component {
                 <div className="SideColumn">
                     <img src={doggy_icon} alt="dog" align="left" />
                 </div>
-
-                {/* <form onSubmit={this.handleSubmit}>
-                    <div id="username">
-                        <label>User Name: </label>
-                        <input onChange={this.handleChange} type="text" name="username" value={this.state.formData.username} required />
-                    </div>
-                    <div id="displayName">
-                        <label>Display Name: </label>
-                        <input onChange={this.handleChange} type="text" name="displayName" value={this.state.formData.displayName} required />
-                    </div>
-                    <div id="password">
-                        <label>Password: </label>
-                        <input onChange={this.handleChange} type="text" name="password" value={this.state.formData.password} required />
-                    </div>
-                    <button>Submit Form</button> <br />
-                </form> */}
             </div>
         );
     }

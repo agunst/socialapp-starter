@@ -3,20 +3,16 @@
     margin: auto;
     margin-top: 30px;
     align-content: space-around;
- 
  }
  
  .LeftSideColumn {
      width: 25%;
      margin-top: 330px;
-     margin-bottom:40px;
- 
-     
+     margin-bottom:40px; 
  }
  
  .ProfileColumn {
      width: 40%;
-     
      align-content: center;
  }
  
@@ -29,7 +25,6 @@
  .RightSideColumn {
      width: 25%;
      margin-top: 330px;
-    
  }
  
  .update-profile {
@@ -46,9 +41,7 @@
      padding: 10px;
      padding-left: 30px;
      padding-right: 30px;
-     
      margin-left: 140px;
- 
  }
  
  .loginButton2 {
@@ -58,7 +51,6 @@
  
  .about {
      margin-left: 63px;
-     
  }
  
  .password {

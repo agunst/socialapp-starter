@@ -1,6 +1,4 @@
 .formBox {
-    
-    
     display: flex;
     width: 960px;
     background-color: white;
@@ -18,8 +16,7 @@
     background: linear-gradient(#fff7db, #eccba7);
     border-radius: 30px;
     background-color: #fff7db; 
-    padding: 10px;
-    
+    padding: 10px; 
 }
 
 .Label {
@@ -64,7 +61,3 @@
     color: black;
     text-decoration: none;
 }
-
-
-
-
