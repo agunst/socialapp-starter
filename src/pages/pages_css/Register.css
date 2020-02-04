@@ -1,22 +1,29 @@
 .formBox {
     display: flex;
-    width: 960px;
+    width: 1349px;
     background-color: white;
-    height: auto;
-    margin: auto;
-    margin-top: 70px;
+    height: 660px;
+    margin: 0 auto;
+    margin-top: 10px;
+
+
+    background-repeat: no-repeat;
+    /* The background picture is 1349px in width and and almost 66px in height which is the size of the #root. */
 }
 
-.SideColumn {
+/* .SideColumn {
     margin-top: 20px;
-}
+} */
 
 .MiddleColumn {
-    border: 3px solid #ce7d38;
+    /* border: 3px solid #ce7d38;
     background: linear-gradient(#fff7db, #eccba7);
     border-radius: 30px;
-    background-color: #fff7db; 
-    padding: 10px; 
+    background-color: #fff7db;  */
+    padding-left: 290px;
+    padding-top: 300px;
+    width: 600px;
+    margin: 0 auto; 
 }
 
 .Label {
@@ -38,7 +45,8 @@
 }
 
 .Form {
-    align-content: center;
+    color: white;
+    
 }
 
 .Thankyou {
@@ -61,3 +69,9 @@
     color: black;
     text-decoration: none;
 }
+
+
+
+
+
+

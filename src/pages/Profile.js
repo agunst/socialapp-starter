@@ -2,10 +2,13 @@ import React from "react";
 import Menu from "../components/Menu";
 import { userIsAuthenticated } from "../HOCs";
 import UserProfile from "../components/userProfile/UserProfile"
+// import { Link } from 'react-router-dom';
+// import { Route, Switch } from "react-router-dom";
 import "./pages_css/profile.css";
 import HerokuappService from "../ApiService";
-import kitty2_icon from './pages_pics/kitty2_icon.jpg';
-import doggy2_icon from './pages_pics/doggy2_icon.jpg';
+import profile_background5 from "./pages_pics/profile_background5.png";
+
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -62,6 +65,7 @@ class Profile extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const formData = this.fileUpload(this.state.picture)
+    // const loginData = JSON.parse(localStorage.getItem("login"))
     this.client.uploadPicture(formData).then(() => {
       this.getUser();
       this.setState({
@@ -99,55 +103,65 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div className="PageAll">
+      <div className="PageAll" >
+
         <div className="MenuBar">
           <Menu isAuthenticated={this.props.isAuthenticated} />
         </div>
-        <div className="Content">
 
-          <div className="LeftSideColumn">
-            <img src={kitty2_icon} alt="happy cat" align="right" />
-          </div>
+        <div className="Content" style={{ backgroundImage: `url(${profile_background5})` }}>
 
           <div className="ProfileColumn">
+
             <div className="ProfileInfo">
-              <h2>{this.state.userData.user && this.state.userData.user.username}</h2>
+              <h2>{this.state.userData.user && this.state.userData.user.displayName}</h2>
+              <br />
               <UserProfile
                 picture={this.state.userData.user && this.state.userData.user.pictureLocation}
+                // userData={this.state.userData.user}
+                // username={this.state.userData.user && this.state.userData.user.username}
+                // displayName={this.state.userData.user && this.state.userData.user.displayName}
+                
+                
                 about={this.state.userData.user && this.state.userData.user.about}
               />
               <br />
-              <form>
+             
+                <div className="additional">
+                <form>
+                
                 <p style={{ textAlign: "center" }}>Please select a picture that is 200kb or less</p>
                 <input value={this.state.formData.picture} name="picture" type="file" onChange={this.onFileChange}></input>
                 <button onClick={this.handleSubmit}>Upload Image</button>
               </form>
-              <br />
-              <h3>Update your Profile </h3>
-
-              <form className="update-profile">
-                <label>
-                  Display Name:
-            <input onChange={this.handleChange} value={this.state.formData.displayName} className="display-name" type="text" name="displayName" />
-                </label>
-                <br />
-                <label>
-                  About:
-            <input onChange={this.handleChange} value={this.state.formData.about} className="about" type="text" name="about" />
-                </label>
-                <br />
-                <label>
-                  Password:
-            <input onChange={this.handleChange} value={this.state.formData.password} className="password" type="text" name="password" />
-                </label>
-                <br />
-                <input onClick={this.submitHandler} className="loginButton2" type="submit" value="Submit" />
-              </form>
+              </div>
+              
+             
             </div>
           </div>
 
           <div className="RightSideColumn">
-            <img src={doggy2_icon} alt="happy dog" align="left" />
+            <h3>Update your Profile </h3>
+
+            <br />
+
+            <form className="update-profile">
+              <label className="Label">Display Name: </label>
+              <input onChange={this.handleChange} value={this.state.formData.displayName} className="display-name" type="text" name="displayName" />
+
+              <br />
+
+              <label className="Label">About: </label>
+              <input onChange={this.handleChange} value={this.state.formData.about} className="about" type="text" name="about" />
+
+              <br />
+
+              <label className="Label">Password: </label>
+              <input onChange={this.handleChange} value={this.state.formData.password} className="password" type="text" name="password" />
+
+              <br />
+              <input onClick={this.submitHandler} className="loginButton2" type="submit" value="Submit" />
+            </form>
           </div >
         </div>
       </div>
