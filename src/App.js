@@ -1,8 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import ActivityPage from './pages/ActivityPage';
