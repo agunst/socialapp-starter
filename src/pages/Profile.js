@@ -113,11 +113,15 @@ class Profile extends React.Component {
                 about={this.state.userData.user && this.state.userData.user.about}
               />
               <br />
-              <form>
+             
+                <div className="additional">
+                <form>
+                
                 <p style={{ textAlign: "center" }}>Please select a picture that is 200kb or less</p>
                 <input value={this.state.formData.picture} name="picture" type="file" onChange={this.onFileChange}></input>
                 <button onClick={this.handleSubmit}>Upload Image</button>
               </form>
+              </div>
               
              
             </div>
