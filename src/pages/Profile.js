@@ -114,7 +114,7 @@ class Profile extends React.Component {
           <div className="ProfileColumn">
 
             <div className="ProfileInfo">
-              <h2>{this.state.userData.user && this.state.userData.user.username}</h2>
+              <h2>{this.state.userData.user && this.state.userData.user.displayName}</h2>
               <br />
               <UserProfile
                 picture={this.state.userData.user && this.state.userData.user.pictureLocation}
@@ -147,32 +147,20 @@ class Profile extends React.Component {
 
             <form className="update-profile">
               <label className="Label">Display Name: </label>
-              <input className="display-name"
-                type="text"
-                name="displayName"
-              />
+              <input onChange={this.handleChange} value={this.state.formData.displayName} className="display-name" type="text" name="displayName" />
 
               <br />
 
               <label className="Label">About: </label>
-              <input className="about"
-                type="text"
-                name="about"
-              />
+              <input onChange={this.handleChange} value={this.state.formData.about} className="about" type="text" name="about" />
 
               <br />
 
               <label className="Label">Password: </label>
-              <input className="password"
-                type="text"
-                name="password"
-              />
+              <input onChange={this.handleChange} value={this.state.formData.password} className="password" type="text" name="password" />
 
               <br />
-              <input className="loginButton2"
-                type="submit"
-                value="Submit"
-              />
+              <input onClick={this.submitHandler} className="loginButton2" type="submit" value="Submit" />
             </form>
           </div >
         </div>
