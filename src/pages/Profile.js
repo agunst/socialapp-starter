@@ -15,7 +15,7 @@ class Profile extends React.Component {
       users: [],
       userData: {},
       isLoaded: false,
-      formData: {}
+      formData: { displayName: "", about: "", password: "" }
     }
   }
 
