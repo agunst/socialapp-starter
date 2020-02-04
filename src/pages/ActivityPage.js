@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import hello_dog from '../components/pics/hello_dog.jpg'
-import square from './pages_pics/square.gif'
+
 import HerokuappService from "../ApiService";
 import { userIsAuthenticated } from "../HOCs"
 import NewPost from '../components/NewPost'

@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import HerokuappService from "../../ApiService";
-import Profile from "../../pages/Profile";
+// import HerokuappService from "../../ApiService";
+// import Profile from "../../pages/Profile";
 
 
 function UserProfile(props) {
+
+    
     return (
         <div>
-            <img src={"http://socialapp-api.herokuapp.com" + props.picture} width="200px" height="200px"/>
+            
+            <img src={"http://socialapp-api.herokuapp.com" + props.picture} alt="picture" width="200px" height="200px"/>
             
             <br/>
             {/* Username: {props.username} */}

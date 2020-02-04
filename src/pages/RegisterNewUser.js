@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import ApiService from "../ApiService";
-
-import kitty_icon from '../components/pics/kitty_icon.jpg'
-import doggy_icon from '../components/pics/doggy_icon.jpg';
+import register_background from "./pages_pics/register_background.png";
+// import kitty_icon from '../components/pics/kitty_icon.jpg'
+// import doggy_icon from '../components/pics/doggy_icon.jpg';
 import cat_approved from '../components/pics/cat_approved.jpg';
+
 
 import "./pages_css/Register.css";
 
@@ -55,8 +56,9 @@ class RegisterNewUser extends React.Component {
         //show the thank you message if the form has been submitted
         if (this.state.submitted) {
             return (
-                <div className="Thankyou">
-                    <div className="Leftside">
+                <div className="Thankyou" >
+                    {/* <div className="formBox" style={{ backgroundImage: `url(${register_background})` }}></div> */}
+                    <div className="Leftside" >
                         <h2>
                         Thank you, {this.state.formData.username}!
                         </h2>
@@ -81,13 +83,11 @@ class RegisterNewUser extends React.Component {
         };
 
         return (
-            <div className="formBox">
+            <div className="formBox" style={{ backgroundImage: `url(${register_background})` }}>
 
-                <div className="SideColumn">
-                    <img src={kitty_icon} alt="cat" align="right" />
-                </div>
+                
 
-                <div className="MiddleColumn">
+                <div className="MiddleColumn" >
                     <form className="Form"
                         onSubmit={this.handleSubmit}>
                         <br />
@@ -111,7 +111,7 @@ class RegisterNewUser extends React.Component {
                             />
                         </div>
                         <br />
-                        <div className="password-r">
+                        <div className="password-r" >
                             <label className="Label">Password: </label>
                             <input className="InputPassword"
                                 onChange={this.handleChange}
@@ -125,9 +125,7 @@ class RegisterNewUser extends React.Component {
                     </form>
                 </div>
 
-                <div className="SideColumn">
-                    <img src={doggy_icon} alt="dog" align="left" />
-                </div>
+                
 
                 {/* <form onSubmit={this.handleSubmit}>
                     <div id="username">
