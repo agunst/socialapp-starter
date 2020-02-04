@@ -91,7 +91,7 @@ class Profile extends React.Component {
       this.setState({
         submitted: true,
         userData: {user: res.data.user},
-        formData: {displayName: "", about:"", password:""}
+        formData: {displayName: "", about:"", password:"", picture: ""}
       })
     })
   
