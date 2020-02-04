@@ -52,7 +52,7 @@ class Profile extends React.Component {
       formData
     })
   }
-
+  // photo
   fileUpload(file) {
     const formData = new FormData()
     formData.append("picture", file)
@@ -70,6 +70,27 @@ class Profile extends React.Component {
         }
       })
     })
+  }
+
+  //profile form
+  handleChange = (event) => {
+    let formData = this.state.formData;
+    formData[event.target.name] = event.target.value;
+    this.setState({ formData });
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    console.log(this.state.userData.user.displayName)
+    this.client.updateUser(this.state.formData).then((res) => { 
+      console.log(res)
+      this.setState({
+        submitted: true,
+        userData: {user: res.data.user},
+        formData: {displayName: "", about:"", password:""}
+      })
+    })
+  
   }
 
   componentDidMount() {
@@ -107,20 +128,20 @@ class Profile extends React.Component {
               <form className="update-profile">
                 <label>
                   Display Name:
-            <input className="display-name" type="text" name="displayName" />
+            <input onChange={this.handleChange} value={this.state.formData.displayName} className="display-name" type="text" name="displayName" />
                 </label>
                 <br />
                 <label>
                   About:
-            <input className="about" type="text" name="about" />
+            <input onChange={this.handleChange} value={this.state.formData.about} className="about" type="text" name="about" />
                 </label>
                 <br />
                 <label>
                   Password:
-            <input className="password" type="text" name="password" />
+            <input onChange={this.handleChange} value={this.state.formData.password} className="password" type="text" name="password" />
                 </label>
                 <br />
-                <input className="loginButton2" type="submit" value="Submit" />
+                <input onClick={this.submitHandler} className="loginButton2" type="submit" value="Submit" />
               </form>
             </div>
           </div>
