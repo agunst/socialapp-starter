@@ -22,15 +22,15 @@ class RegisterNewUser extends React.Component {
             }
         }
     }
+
     handleChange = (event) => {
         let formData = this.state.formData;
         formData[event.target.name] = event.target.value;
         this.setState({ formData });
     }
+
     handleSubmit = (event) => {
         event.preventDefault();
-
-
         this.client.postUser(this.state.formData).then(result => {
             this.setState({
                 submitted: true
@@ -39,18 +39,6 @@ class RegisterNewUser extends React.Component {
             console.log(error.message)
         })
     }
-    // Following code copied from react-demo-app. 
-    // Saving in case we need it later.
-    // resetForm = (event) => {
-    //     this.setState({
-    //         submitted: false,
-    //         formData: {
-    //             username: "",
-    //             displayName: "",
-    //             password: ""
-    //         }
-    //     })
-    // }
 
     render() {
         //show the thank you message if the form has been submitted
@@ -60,25 +48,18 @@ class RegisterNewUser extends React.Component {
                     {/* <div className="formBox" style={{ backgroundImage: `url(${register_background})` }}></div> */}
                     <div className="Leftside" >
                         <h2>
-                        Thank you, {this.state.formData.username}!
+                            Thank you, {this.state.formData.username}!
                         </h2>
-                    {/* Thank you, {this.state.formData.username}! */}
-                    <br />
-                    Your account has been created - you are now ready to log in!
-                    <br />
-                    <br />
-                    <button className="loginButton"><Link to="/">Return to Log In Page</Link></button>
+                        <br />
+                        Your account has been created - you are now ready to log in!
+                        <br />
+                        <br />
+                        <button className="loginButton"><Link to="/">Return to Log In Page</Link></button>
                     </div>
                     <div className="Rightside">
                         <img src={cat_approved} alt="cat with thumb up" align="left" />
                     </div>
                 </div>
-                // <div>
-                //     Thank you, {this.state.formData.username}!
-                //     <br />
-                //     Your account has been created - you are now ready to log in!
-                //     <button><Link to="/">Return to Log In Page</Link></button>
-                // </div>
             );
         };
 

@@ -1,7 +1,4 @@
-import React, {Component} from 'react';
-// import HerokuappService from "../../ApiService";
-// import Profile from "../../pages/Profile";
-
+import React from 'react';
 
 function UserProfile(props) {
 
@@ -22,5 +19,3 @@ function UserProfile(props) {
 }
 
 export default UserProfile;
-// User: {JSON.stringify(props.userData)}
-// {props.userData}

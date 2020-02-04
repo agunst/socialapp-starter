@@ -14,46 +14,6 @@ code {
     monospace;
 }
 
-/* .Main {
-  display: flex;
-  width: 960px;
-  margin: auto;
-  margin-top: 30px;
-  padding: 1px;
-  height: auto;
-  justify-content: space-around;
-}
-
-.SecondColumn {
-  
-  border: 3px solid #995109;
-  background: linear-gradient(#fff7db, #eccba7);
-  border-radius: 30px;
-  background-color: #fff7db; 
-  padding: 10px;
-} */
-
-/* .ThirdColumn {
-  
-  border: 3px solid #995109;
-  margin-left: 30px;
-  margin-right: 30px;
-  border-radius: 30px;
-  background-color: #fff7db; 
-  padding: 10px;
-  background: linear-gradient(#fff7db, #eccba7);
-  
-}
-
-.FirstColumn h3 {
-color: #995109;
-} */
-/* 
-.FirstColumn {
-  margin-left: 10px;
-  align-items: center;
-} */
-
 .MyPosts, .NewsFeed {
   overflow: scroll;
   overflow-x: hidden;

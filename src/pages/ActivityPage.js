@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import hello_dog from '../components/pics/hello_dog.jpg'
-
 import HerokuappService from "../ApiService";
 import { userIsAuthenticated } from "../HOCs"
 import NewPost from '../components/NewPost'
@@ -8,6 +7,7 @@ import MyPosts from '../components/MyPosts'
 import NewsFeed from '../components/NewsFeed'
 import Menu from '../components/Menu'
 import "./pages_css/activityPage.css";
+
 class ActivityPage extends Component {
     constructor(props) {
         super(props)
@@ -17,6 +17,7 @@ class ActivityPage extends Component {
             messages: []
         }
     }
+
     getMessages = () => {
         this.client.getMessages().then(result => {
             let myMessages = result.data.messages.filter(function (message) {
@@ -29,9 +30,11 @@ class ActivityPage extends Component {
             })
         })
     }
+
     componentDidMount() {
         this.getMessages();
     }
+
     render() {
         return (
             <div className="Parent">
@@ -48,20 +51,22 @@ class ActivityPage extends Component {
                             <img src={hello_dog} alt="happy dog" align="right" />
                         </div>
                     </div>
+
                     <div className="SecondColumn">
                         <div className="ColumnHeader">
                             <h3>My Posts</h3>
                             <MyPosts messagelist={this.state.myposts} updateFeed={this.getMessages} />
                         </div>
                     </div>
+
                     <div className="ThirdColumn">
                         <h3>NewsFeed</h3>
                         <NewsFeed messagelist={this.state.messages} updateFeed={this.getMessages} />
                     </div>
                 </div>
             </div>
-
         )
     }
 }
+
 export default userIsAuthenticated(ActivityPage)

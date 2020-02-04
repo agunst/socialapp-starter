@@ -26,7 +26,6 @@ class MyTextMessage extends Component {
         })
     }
 
-
     Unlike = (event) => {
         this.client.removeLike(parseInt(event.target.dataset.likeid)).then(result => {
             this.props.updateFeed();
@@ -49,7 +48,7 @@ class MyTextMessage extends Component {
             }
         }
 
-        if (this.props.newpost.username === loginData.result.username){
+        if (this.props.newpost.username === loginData.result.username) {
             deletebutton = <button data-messageid={this.props.newpost.id} onClick={this.deleteHandler}>Delete</button>;
         }
 
@@ -63,9 +62,9 @@ class MyTextMessage extends Component {
                         {this.props.newpost.text}
                     </Card.Body>
                     <Card.Img id="pawLike" variant="bottom" src={likeButtonImage}
-                        data-messageid={this.props.newpost.id} data-likeid={likeID} onClick={likeChanger} className="LikeButton" />
+                        data-messageid={this.props.newpost.id} data-likeid={likeID} onClick={likeChanger} className="LikeButton" alt="Like Button"/>
                     | {this.props.newpost.likes.length}
-                    | {deletebutton} 
+                    | {deletebutton}
                 </Card.Body>
             </Card>
         )
