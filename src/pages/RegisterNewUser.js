@@ -61,7 +61,6 @@ class RegisterNewUser extends React.Component {
 
         return (
             <div className="formBox">
-
                 <div className="SideColumn">
                     <img src={kitty_icon} alt="cat" align="right" />
                 </div>
