@@ -1,3 +1,11 @@
+/*
+
+ECS: The component is doing more than it should. The picture upload
+could be broken out into a separate component. The update profile form could
+could be broken out as well
+
+*/
+
 import React from "react";
 import Menu from "../components/Menu";
 import { userIsAuthenticated } from "../HOCs";
@@ -32,6 +40,12 @@ class Profile extends React.Component {
       })
     })
   }
+
+  /*
+
+  ECS: unused or unfinished features should not make it into the master branch
+
+  */
 
   // Code for accessing a list of all users - but not called anywhere.
   // getUsers() {

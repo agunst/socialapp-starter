@@ -1,3 +1,13 @@
+/*
+
+PGM: Consider storing the token and authorization header in a variable so you don't have repeated code.
+For example, inside your constructor you could add:
+this.token = JSON.parse(localStorage.getItem("login")).result.token;
+this.header = {headers: {Authorization: `Bearer ${this.token}`}}
+
+then you can just pass this.header to your requests that require authorization
+*/
+
 //import the axios HTTP client to communicate with the API
 import axios from 'axios';
 class HerokuappService {

@@ -1,3 +1,10 @@
+/*
+
+ECS: This could be broken into smaller components. A thank you and a
+form component could be created.
+
+*/
+
 import React from 'react';
 import { Link } from "react-router-dom";
 import ApiService from "../ApiService";

@@ -1,3 +1,10 @@
+/*
+
+ECS: I would consider having one feed component since MyPosts and NewsFeed
+do the same thing bascially. 
+
+*/
+
 import React, { Component } from 'react'
 import hello_dog from '../components/pics/hello_dog.jpg'
 import HerokuappService from "../ApiService";
