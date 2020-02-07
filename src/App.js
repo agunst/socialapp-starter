@@ -31,6 +31,7 @@ class App extends React.Component {
           path="/activitypage"
           component={ActivityPage}
         />
+        {/* ECS: You have 2 routes for NotFound */}
         <Route
           exact
           path="*"
